@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Magento_Backend::categoryfaq_settings" title="Category FAQ" module="Etatvasoft_CategoryFaq" sortOrder="60"  resource="Magento_Backend::categoryfaq_settings" />
+        <add id="Etatvasoft_CategoryFaq::etatvasoft_categoryfaq" title="Manage Category FAQ" module="Etatvasoft_CategoryFaq" sortOrder="0" parent="Magento_Backend::categoryfaq_settings" action="categoryfaq/categoryfaqbackend" resource="Etatvasoft_CategoryFaq::categoryfaq"/>
+    </menu>
+</config>

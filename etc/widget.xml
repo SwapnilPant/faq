@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+	<widget class="Etatvasoft\CategoryFaq\Block\Widget\CategoryFaq" id="etatvasoft_categoryfaq">
+		<label>Category FAQ</label>
+        <description>Etatvasoft Category FAQ</description>
+		<parameters>
+			<parameter name="categoryfaqlabel" sort_order="10" visible="true" xsi:type="text">
+				<label>Category FAQ Title</label>
+			</parameter>
+			<parameter name="template" xsi:type="select" required="true" visible="false">
+                <label>Template</label>
+                <options>
+                    <option name="datatemplate" value="widget/categoryfaq.phtml" selected="true">
+                        <label translate="true">Category FAQ Template</label>
+                    </option>                    
+                </options>
+            </parameter>
+		</parameters>
+		<containers>           
+            <container name="content">
+                <template name="datatemplate" value="datatemplate" />
+            </container>
+        </containers>
+	</widget>
+</widgets>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="categoryfaq_categoryfaqbackend_listing_data_source" xsi:type="string">Etatvasoft\CategoryFaq\Model\ResourceModel\CategoryFaq\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Etatvasoft\CategoryFaq\Model\ResourceModel\CategoryFaq\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">etatvasoft_categoryfaq</argument>
+            <argument name="eventPrefix" xsi:type="string">etatvasoft_categoryfaq_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">categoryfaq_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Etatvasoft\CategoryFaq\Model\ResourceModel\CategoryFaq</argument>
+        </arguments>
+    </type>
+    <virtualType name="CategoryFaqGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CategoryFaqGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Etatvasoft\CategoryFaq\Model\ResourceModel\CategoryFaq\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">CategoryFaqGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+
+    <preference for="Etatvasoft\CategoryFaq\Api\CategoryFaqRepositoryInterface" type="Etatvasoft\CategoryFaq\Model\CategoryFaqRepository" />
+    <preference for="Etatvasoft\CategoryFaq\Api\Data\CategoryFaqInterface" type="Etatvasoft\CategoryFaq\Model\CategoryFaq" />
+
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Etatvasoft\CategoryFaq\Api\Data\CategoryFaqInterface" xsi:type="string">Etatvasoft\CategoryFaq\Api\CategoryFaqRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type> 
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Etatvasoft\CategoryFaq\Api\Data\CategoryFaqInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">etatvasoft_categoryfaq</item>
+                    <item name="identifierField" xsi:type="string">categoryfaq_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Etatvasoft\CategoryFaq\Api\Data\CategoryFaqInterface" xsi:type="array">
+                    <item name="read" xsi:type="array">
+                        <item name="storeReader" xsi:type="string">Etatvasoft\CategoryFaq\Model\ResourceModel\CategoryFaq\Relation\Store\ReadHandler</item>
+                    </item>
+                    <item name="create" xsi:type="array">
+                        <item name="storeCreator" xsi:type="string">Etatvasoft\CategoryFaq\Model\ResourceModel\CategoryFaq\Relation\Store\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="storeUpdater" xsi:type="string">Etatvasoft\CategoryFaq\Model\ResourceModel\CategoryFaq\Relation\Store\SaveHandler</item>
+                    </item>
+                </item>                
+           </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Etatvasoft\CategoryFaq\Api\Data\CategoryFaqInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

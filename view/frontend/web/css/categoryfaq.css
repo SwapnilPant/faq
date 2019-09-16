@@ -1,0 +1,57 @@
+/* FAQ */
+
+.etatvasoft-faq-block .accordion .block > .question {
+    border-bottom: 1px solid #cccccc;
+    padding: 10px 40px 10px 0;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 0;
+    position: relative;
+    cursor: pointer;
+    line-height: 32px;
+}
+
+.etatvasoft-faq-block .accordion .block > .question::after {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    line-height: 12px;
+    color: inherit;
+    content: '\e622';
+    font-family: 'luma-icons';
+    margin: 3px 0 0;
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+}
+
+.etatvasoft-faq-block .accordion .block > .open::after {
+    content: '\e621' !important;
+}
+
+.etatvasoft-faq-block .accordion .block > .question strong {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.etatvasoft-faq-block .answer{
+    padding: 10px 0px 10px 0px;
+    display: none;
+    overflow: hidden;
+    line-height: 32px;
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+@media(max-width: 767px){
+    .etatvasoft-faq-block .accordion .block > .question::after {
+        top: 20px;
+    }
+}
